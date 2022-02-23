@@ -1,9 +1,10 @@
 Name:                   libvpx
 Version:                1.7.0
-Release:                8
+Release:                9
 Summary:                VP8/VP9 Video Codec SDK
 License:                BSD
 Source0:                https://github.com/webmproject/libvpx/archive/v%{version}.tar.gz
+Patch0:			add-arch.patch
 URL:                    http://www.webmproject.org/code/
 BuildRequires:          gcc gcc-c++ doxygen, php-cli, perl(Getopt::Long)
 %ifarch x86_64
@@ -28,12 +29,14 @@ Development libraries and headers for developing software against libvpx.
 %autosetup libvpx-%{version} -p1
 
 %build
+%ifarch riscv64
+%global vpxtarget riscv64-linux-gcc
+%endif
 %ifarch x86_64
 %global vpxtarget x86_64-linux-gcc
-%else
+%endif
 %ifarch aarch64
 %global vpxtarget arm64-linux-gcc
-%endif
 %endif
 %set_build_flags
 
@@ -102,6 +105,9 @@ mv %{buildroot}%{_prefix}/src/vpx_scale %{buildroot}%{_includedir}/
 %{_libdir}/libvpx.so
 
 %changelog
+* Wed Feb 23 2022 YukariChiba <i@0x7f.cc> -1.7.0-9
+- Add RISC-V arch support
+
 * Fri Nov 08 2019 Lijin Yang <yanglijin@huawei.com> -1.7.0-8
 - Pakcage init
 
