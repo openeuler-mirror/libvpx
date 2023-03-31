@@ -1,6 +1,6 @@
 Name:                   libvpx
-Version:                1.7.0
-Release:                8
+Version:                1.12.0
+Release:                1
 Summary:                VP8/VP9 Video Codec SDK
 License:                BSD
 Source0:                https://github.com/webmproject/libvpx/archive/v%{version}.tar.gz
@@ -39,7 +39,7 @@ Development libraries and headers for developing software against libvpx.
 
 ./configure --target=%{vpxtarget} \
 --enable-pic --disable-install-srcs --enable-vp9-decoder \
---enable-vp9-encoder --enable-experimental --enable-spatial-svc \
+--enable-vp9-encoder --enable-experimental \
 --enable-vp9-highbitdepth --enable-shared --enable-install-srcs \
 --prefix=%{_prefix} --libdir=%{_libdir} --size-limit=16384x16384
 
@@ -102,6 +102,9 @@ mv %{buildroot}%{_prefix}/src/vpx_scale %{buildroot}%{_includedir}/
 %{_libdir}/libvpx.so
 
 %changelog
+* Sat Feb 04 2023 wenchaofan <349464272@qq.com> - 1.12.0-1
+- Update to 1.12.0 version
+
 * Fri Nov 08 2019 Lijin Yang <yanglijin@huawei.com> -1.7.0-8
 - Pakcage init
 
