@@ -1,0 +1,24 @@
+diff -ur libvpx-1.7.0/build/make/configure.sh libvpx-1.7.0/build/make/configure.sh
+--- libvpx-1.7.0/build/make/configure.sh	2023-05-10 17:48:49.462837402 +0800
++++ libvpx-1.7.0/build/make/configure.sh	2023-05-10 17:47:43.749798001 +0800
+@@ -725,6 +725,9 @@
+       *mips32el*)
+         tgt_isa=mips32
+         ;;
++      *riscv64*)
++        tgt_isa=riscv64
++        ;;
+     esac
+ 
+     # detect tgt_os
+diff -ur libvpx-1.7.0/configure libvpx-1.7.0/configure
+--- libvpx-1.7.0/configure	2023-05-10 17:48:26.014466513 +0800
++++ libvpx-1.7.0/configure	2023-05-10 17:47:43.753798064 +0800
+@@ -159,6 +159,7 @@
+ all_platforms="${all_platforms} x86_64-win64-vs12"
+ all_platforms="${all_platforms} x86_64-win64-vs14"
+ all_platforms="${all_platforms} x86_64-win64-vs15"
++all_platforms="${all_platforms} riscv64-linux-gcc"
+ all_platforms="${all_platforms} generic-gnu"
+ 
+ # all_targets is a list of all targets that can be configured
